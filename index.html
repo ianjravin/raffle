@@ -64,7 +64,9 @@
 				<li data-target="#main-slider" data-slide-to="0" class="active"></li>
 				<li data-target="#main-slider" data-slide-to="1"></li>
 				<li data-target="#main-slider" data-slide-to="2"></li>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" >Buy Raffle</button>
+
+<a class="button" data-toggle="modal" data-target="#myModal">Buy Raffle!</a>
+<button type="submit" class="button" data-toggle="modal" data-target="#myModal">Buy Raffle!</button>
 			</ol>
 			<div class="carousel-inner">
 				<div class="item active">
@@ -79,6 +81,7 @@
 <section>
 
   <img class="img-responsive" src="images/slider/img.jpg" alt="slider" >
+
 </div>
   <div class="container">
 
@@ -209,71 +212,35 @@
   </div>
 </section>
 
+<!-- Gallery -->
+  <section id="galleries">
 
-<div class="row">
-  <div class="column">
-    <img src="images/11.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+    <!-- Photo Galleries -->
+<div class="gallery">
+  <a class="button" data-toggle="modal" data-target="#myModal" >Buy Raffle!</a>
+  <button type="submit" class="button" data-toggle="modal" data-target="#myModal">Buy Raffle!</button>
+
+  <header class="special">
+    <h2>Current Progress</h2>
+  </header>
+  <div class="content">
+    <div class="media">
+      <a href="images/1.jpg"><img src="images/11.jpg" alt="" title="#" /></a>
+    </div>
+    <div class="media">
+      <a href="images/2.jpg"><img src="images/22.jpg" alt="" title="#" /></a>
+    </div>
+    <div class="media">
+      <a href="images/3.jpg"><img src="images/33.jpg" alt="" title="#" /></a>
+    </div>
+    <div class="media">
+      <a href="images/4.jpg"><img src="images/44.jpg" alt="" title="#" /></a>
+    </div>
+
   </div>
-  <div class="column">
-    <img src="images/22.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
-  </div>
-  <div class="column">
-    <img src="images/33.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
-  </div>
-  <div class="column">
-    <img src="images/44.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
-  </div>
+
 </div>
-
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-
-    <div class="mySlides">
-      <div class="numbertext">1 / 4</div>
-      <img src="images/1.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-      <div class="numbertext">2 / 4</div>
-      <img src="images/2.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-      <div class="numbertext">3 / 4</div>
-      <img src="images/3.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-      <div class="numbertext">4 / 4</div>
-      <img src="images/11.jpg4" style="width:100%">
-    </div>
-
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-    <div class="caption-container">
-      <p id="caption"></p>
-    </div>
-
-    <div class="column">
-      <img class="demo" src="images/11.jpg" onclick="currentSlide(1)" alt="Nature">
-    </div>
-
-    <div class="column">
-      <img class="demo" src="images/22.jpg" onclick="currentSlide(2)" alt="Trolltunga">
-    </div>
-
-    <div class="column">
-      <img class="demo" src="images/33.jpg" onclick="currentSlide(3)" alt="Mountains">
-    </div>
-
-    <div class="column">
-      <img class="demo" src="images/44.jpg" onclick="currentSlide(4)" alt="Lights">
-    </div>
-  </div>
-</div>
-
+</section>
 
 
 
