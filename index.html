@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,28 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+.col-container {
+    display: table;
+    width: 100%;
+}
+.col {
+    display: table-cell;
+    padding: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+    .col {
+        display: block;
+        width: 100%;
+    }
+}
+</style>
+</head>
 </head><!--/head-->
 
 <body>
@@ -86,7 +108,7 @@
 
 </div>
 </div>
-  <div class="container">
+  <div id="app" class="container">
 
     <!-- Trigger the modal with a button -->
 
@@ -100,25 +122,26 @@
 
           </div>
           <div class="modal-body">
-            <p> Raffles </>
+            <p> Raffles </p>
               <select>
-                <option value="null">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
               </select>
               <div class="col-container">
                 <div class="col" >
-                  <form action="/action_page.php">
+                  <img src="images/mpesa.jpg" alt="mpesa icon" height="70px" width="100px">
+                  <form  onsubmit="return false;">
                     Telephone:
-                    <input type="tel" name="usrtel">
+                    <input type="tel" v-model="phoneNumber">
                     <br><br>
-                      <button class="btn btn-success">Pay Now</button>
+                      <button v-on:click="pushMpesa" class="btn btn-success">Pay Now</button>
                   </form>
                 </div>
                 <div class="col">
+                   <img src="images/Credit-Card.png" alt="visa icon" height="50px" width="150px">
                   <div class="row-fluid">
-                    <form class="form-horizontal">
+                    <form onsubmit="return false;" class="form-horizontal">
                       <fieldset>
                         <!--  <div id="legend">
                         <legend class="">Payment</legend>
@@ -128,7 +151,7 @@
                       <div class="control-group">
                         <label class="control-label"  for="username">Card Holder's Name</label>
                         <div class="controls">
-                          <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                          <input type="text"v-model="cardHolderName" name="username" placeholder="" class="input-xlarge">
                         </div>
                       </div>
 
@@ -136,7 +159,7 @@
                       <div class="control-group">
                         <label class="control-label" for="email">Card Number</label>
                         <div class="controls">
-                          <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+                          <input type="text" v-model="cardNumber" name="email" placeholder="" class="input-xlarge">
                         </div>
                       </div>
 
@@ -144,33 +167,33 @@
                       <div class="control-group">
                         <label class="control-label" for="password">Card Expiry Date</label>
                         <div class="controls">
-                          <select class="span3" name="expiry_month" id="expiry_month">
+                          <select v-model="selectedMonth" class="span3" name="expiry_month" id="expiry_month">
                             <option></option>
-                            <option value="01">Jan (01)</option>
-                            <option value="02">Feb (02)</option>
-                            <option value="03">Mar (03)</option>
-                            <option value="04">Apr (04)</option>
-                            <option value="05">May (05)</option>
-                            <option value="06">June (06)</option>
-                            <option value="07">July (07)</option>
-                            <option value="08">Aug (08)</option>
-                            <option value="09">Sep (09)</option>
-                            <option value="10">Oct (10)</option>1
-                            <option value="11">Nov (11)</option>
-                            <option value="12">Dec (12)</option>
+                            <option v-bind:value="{ month: 1}" >Jan (01)</option>
+                            <option v-bind:value="{ month: 2 }">Feb (02)</option>
+                            <option v-bind:value="{ month: 3 }">Mar (03)</option>
+                            <option v-bind:value="{ month: 4 }">Apr (04)</option>
+                            <option v-bind:value="{ month: 5 }">May (05)</option>
+                            <option v-bind:value="{ month: 6 }">June (06)</option>
+                            <option v-bind:value="{ month: 7 }">July (07)</option>
+                            <option v-bind:value="{ month: 8 }">Aug (08)</option>
+                            <option v-bind:value="{ month: 9 }">Sep (09)</option>
+                            <option v-bind:value="{ month: 10 }">Oct (10)</option>1
+                            <option v-bind:value="{ month: 11 }">Nov (11)</option>
+                            <option v-bind:value="{ month: 12 }">Dec (12)</option>
                           </select>
-                          <select class="span2" name="expiry_year">
-                            <option value="13">2017</option>
-                            <option value="14">2018</option>
-                            <option value="15">2019</option>
-                            <option value="16">2020</option>
-                            <option value="17">2021</option>
-                            <option value="18">2022</option>
-                            <option value="19">2023</option>
-                            <option value="20">2024</option>
-                            <option value="21">2025</option>
-                            <option value="22">2026</option>
-                            <option value="23">2027</option>
+                          <select v-model="selectedYear" class="span2" name="expiry_year">
+                            <option v-bind:value="{ year: 2017}">2017</option>
+                            <option v-bind:value="{ year: 2018}">2018</option>
+                            <option v-bind:value="{ year: 2019}">2019</option>
+                            <option v-bind:value="{ year: 2020}">2020</option>
+                            <option v-bind:value="{ year: 2021}">2021</option>
+                            <option v-bind:value="{ year: 2022}">2022</option>
+                            <option v-bind:value="{ year: 2023}">2023</option>
+                            <option v-bind:value="{ year: 2024}">2024</option>
+                            <option v-bind:value="{ year: 2025}">2025</option>
+                            <option v-bind:value="{ year: 2026}">2026</option>
+                            <option v-bind:value="{ year: 2027}">2027</option>
                           </select>
                         </div>
                       </div>
@@ -179,7 +202,7 @@
                       <div class="control-group">
                         <label class="control-label"  for="password_confirm">Card CVV</label>
                         <div class="controls">
-                          <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="span2">
+                          <input type="password" v-model="cardCVV" name="password_confirm" placeholder="" class="span2">
                         </div>
                       </div>
 
@@ -196,7 +219,7 @@
                       <!-- Submit -->
                       <div class="control-group">
                         <div class="controls">
-                          <button class="btn btn-success">Pay Now</button>
+                          <button v-on:click="cardPayment" class="btn btn-success">Pay Now</button>
                         </div>
                       </div>
 
@@ -242,12 +265,6 @@
 
 </div>
 </section>
-
-
-
-
-
-
 
 
     <footer id="footer">
@@ -308,4 +325,64 @@
     <script type="text/javascript" src="js/jquery.nav.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
+
+
+
+<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            phoneNumber: '',
+            url: 'http://localhost:8080/nouveta/laibon/raffle/api/index.php',
+            cardHolderName: '',
+            cardNumber: '',
+            cardExpiryDate: '',
+            cardCVV: ''
+        },
+        methods: {
+            pushMpesa: function () {
+                if( this.phoneNumber ===''){
+                    alert("Please Enter your Mpesa Mobile Number")
+                    return
+                }
+                var data = new FormData()
+                data.append('function', 'MpesaPush')
+                data.append('phoneNumber', this.phoneNumber)
+                axios.post(this.url,data)
+                    .then(function (response) {
+                        alert(response.data.message)
+                }).catch(function ( error) {
+
+                })
+            },
+            cardPayment: function () {
+                if( this.cardHolderName ==='' || this.cardNumber ==='' || this.cardCVV===''){
+                    alert("Please Enter you card details")
+                    return
+                }
+                var data = new FormData()
+                data.append('function', 'cardPayment')
+                data.append('cardHolderName', this.cardHolderName)
+                data.append('cardNumber', this.cardNumber)
+                data.append('year',this.selectedYear.year)
+                data.append('month', this.selectedMonth.month)
+                data.append('cardCVV', this.cardCVV)
+                axios.post(this.url,data)
+                    .then(function (response) {
+                        alert(response.data.message)
+                }).catch(function ( error) {
+
+                })
+            }
+        }
+
+    })
+</script>
+
+
 </html>
