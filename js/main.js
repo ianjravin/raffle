@@ -145,3 +145,10 @@ jQuery(function($) {'use strict',
 
 	map.setStyle("map_style");
 }());
+
+
+$(window).load(function(){
+        setTimeout(function() {
+                $('#enquirypopup').modal('show');
+        }, 3000);
+            });
