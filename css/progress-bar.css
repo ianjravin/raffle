@@ -25,7 +25,7 @@
   /* Safari 4-5, Chrome 1-9 */
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFA600), to(#FFA600));
   /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(top, #FFA600, ##FFA600);
+  background: -webkit-linear-gradient(top, #FFA600, #FFA600);
   /* Firefox 3.6+ */
   background: -moz-linear-gradient(top, #FFA600, #FFA600);
   /* IE 10 */
